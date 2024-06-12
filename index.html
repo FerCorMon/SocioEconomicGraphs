@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pobreza en México (2008-2018) - Análisis Diferente</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            drawLineChart();
+            drawBarChart();
+            drawPieChart();
+            drawAreaChart();
+            drawStackedBarChart();
+        }
+
+        function drawLineChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Zonas Rurales (%)', 'Zonas Urbanas (%)'],
+                ['2008',  62.5,  38.9],
+                ['2018',  55.3,  37.6]
+            ]);
+
+            var options = {
+                title: 'Pobreza en Zonas Rurales y Urbanas (2008-2018)',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('line_chart'));
+            chart.draw(data, options);
+        }
+
+        function drawBarChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Hablante (%)', 'No Hablante (%)'],
+                ['2008',  76.0,  41.4],
+                ['2018',  74.9,  39.4]
+            ]);
+
+            var options = {
+                title: 'Pobreza entre Hablantes y No Hablantes de Lengua Indígena (2008-2018)',
+                chartArea: {width: '50%'},
+                hAxis: {
+                    title: 'Porcentaje',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'Año'
+                }
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById('bar_chart'));
+            chart.draw(data, options);
+        }
+
+        function drawPieChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Genero', 'Porcentaje en 2018'],
+                ['Hombres',  41.4],
+                ['Mujeres',  42.4]
+            ]);
+
+            var options = {
+                title: 'Pobreza por Género en 2018'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+            chart.draw(data, options);
+        }
+
+        function drawAreaChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Menores de 18 años (%)', '12-29 años (%)', 'Adultos Mayores (%)'],
+                ['2008',  53.3,  43.0,  44.9],
+                ['2018',  49.6,  42.4,  41.1]
+            ]);
+
+            var options = {
+                title: 'Pobreza por Grupo de Edad (2008-2018)',
+                isStacked: true
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('area_chart'));
+            chart.draw(data, options);
+        }
+
+        function drawStackedBarChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Población con Discapacidad (%)'],
+                ['2010',  50.2],
+                ['2018',  48.6]
+            ]);
+
+            var options = {
+                title: 'Pobreza entre la Población con Discapacidad (2010-2018)',
+                chartArea: {width: '50%'},
+                isStacked: true,
+                hAxis: {
+                    title: 'Porcentaje',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'Año'
+                }
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById('stacked_bar_chart'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <h1>Pobreza en México (2008-2018) - Análisis Diferente</h1>
+    <div id="line_chart" style="width: 900px; height: 500px;"></div>
+    <div id="bar_chart" style="width: 900px; height: 500px;"></div>
+    <div id="pie_chart" style="width: 900px; height: 500px;"></div>
+    <div id="area_chart" style="width: 900px; height: 500px;"></div>
+    <div id="stacked_bar_chart" style="width: 900px; height: 500px;"></div>
+</body>
+</html>
